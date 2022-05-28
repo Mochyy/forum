@@ -29,6 +29,7 @@
 
 <h3>Chủ đề: <%=topic.getTitle()%></h3>
 <p>Bài mới nhất gửi <%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%> PM do <b><%=topic.getUser().get().getUsername()%></b>. <%=topic.getNumberRe()%> hồi âm</p>
+<a href="/newReplyTopic/<%=topic.getId()%>"> trả lời</a>
 <table>
 
 
