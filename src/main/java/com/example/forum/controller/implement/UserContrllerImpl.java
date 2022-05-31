@@ -143,6 +143,27 @@ public class UserContrllerImpl implements UserController {
         return getTopics(model);
     }
 
+    @Override
+    public String getAllTopicById(Model model, HttpSession session) {
+
+        User user = (User) session.getAttribute("User");
+
+
+        List<TopicEntity> topicEntities = forumService.getAllTopicByIDUser(user.getId());
+
+        model.addAttribute("topics",topicEntities);
+
+        return "Account";
+    }
+
+    @Override
+    public String deleteTopics(Model model, String listId,HttpSession session) {
+
+        forumService.deleteTopics(listId);
+
+        return getAllTopicById(model,session);
+    }
+
     public List<Message> getMessage(String id){
 
         List<MessageEntity> messageEntities = forumService.getMessages(id);

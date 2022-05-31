@@ -40,4 +40,16 @@ public class ForumService {
 
     public TopicEntity saveNewTopic(TopicEntity topic){return topicReponstory.save(topic);}
 
+    public List<TopicEntity> getAllTopicByIDUser(String id){return topicReponstory.findAllByIduser(id);}
+
+    public void deleteTopics(String listId){
+
+        String[] s = listId.split("-");
+
+        for (int i = 0; i < s.length; i++) {
+            topicReponstory.deleteAllById(Integer.parseInt(s[i]));
+        }
+
+    }
+
 }

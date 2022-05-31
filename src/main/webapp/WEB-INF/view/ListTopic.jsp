@@ -26,7 +26,7 @@
 <body>
 
 
-<p style="text-align: right;">Chao | <%=user.getUsername()%><a href="/logout">  Thoat</a></p>
+<p style="text-align: right;">Chao | <a href="/getTopicById"><%=user.getUsername()%></a> <a href="/logout">  Thoat</a></p>
 
 <p> Dien dan: chuyen hoc phi va cac chinh sach ho tro hoc tap (<%=topicEntities.size()%>)</p>
 

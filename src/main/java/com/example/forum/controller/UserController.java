@@ -29,5 +29,9 @@ public interface UserController {
     public String newTopic(@PathVariable String id,Model model);
     @PostMapping("/newTopic")
     public String saveTopic(@RequestParam String title,@RequestParam String description,String id,HttpSession session,Model model);
+    @GetMapping("/getTopicById")
+    public String getAllTopicById(Model model,HttpSession session);
+    @GetMapping("/deleteTopic")
+    public String deleteTopics(Model model,@RequestParam String listId,HttpSession session);
 
 }
