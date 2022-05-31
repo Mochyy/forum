@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,13 +16,19 @@
 
         <form id="formlogin" action="/login" method="post">
 
-            <h3>Dang nhap</h3>
+            <h3>Đăng nhập</h3>
 
-            <label id="tendn">Ten dang nhap: </label> <input id="name" type="text" name="name">
-            <br>
-            <label id="matkhau">Mat khau: </label> <input id="password" type="text" name="password">
+            <div id="divtk" class="divchung">
+                <label id="tendn" class="inputchung">Tên đăng nhập </label> <input id="name" type="text" name="name">
+            </div>
 
-            <button type="button" onclick="login()"> Dang nhap</button>
+            <div id="dvimk" class="divchung">
+                <label id="matkhau" class="inputchung">Mật khẩu </label> <input id="password" type="text" name="password">
+            </div>
+            <div id="btn">
+                <button class="btnbt" type="button" onclick="login()"> Đăng nhập</button>
+            </div>
+
 
         </form>
 

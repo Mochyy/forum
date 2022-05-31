@@ -1,9 +1,33 @@
 #formlogin{
 
-    width: 300px;
+    width: 400px;
     margin: auto;
-
+    border: 1px black solid;
 }
 h3{
     text-align: center;
+}
+.divchung{
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+}
+.inputchung{
+    width: 150px;
+    padding-left: 20px;
+
+}
+#btn{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+.btnbt{
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+input{
+    height: 20px;
 }

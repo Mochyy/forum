@@ -7,6 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>New Topic</title>
     <% String id  = (String) request.getAttribute("id");
     User user = (User) session.getAttribute("User");%>
@@ -14,14 +15,17 @@
 <body>
 <p style="text-align: right;">Chao | <%=user.getUsername()%><a href="/logout">  Thoat</a></p>
 
-    <label> Tieu De</label>
-    <input type="text" name="title" id="title">
-    <br>
-    <label> Noi Dung </label>
-    <input type="text" name="content" id="content" height="100px">
+<label style="font-weight: bold"> Tiêu Đề </label> <br>
+<input type="text" name="title" style="width: 500px;" id="title">
+<br>
+<label style="font-weight: bold;"> Nội Dung </label> <br>
+<textarea type="text" rows="7" cols="66" name="content" style="overflow-y: scroll" id="content" height="100px"></textarea>
 
+<div>
     <button type="button" onclick="createTopic()">Goi</button>
     <a href="/topics"><button>Huy bo</button></a>
+</div>
+
 
 
 </body>
