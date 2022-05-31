@@ -39,14 +39,21 @@ public class UserContrllerImpl implements UserController {
         if (user!=null){
             session.setAttribute("User",user);
             model.addAttribute("user",user);
-            return getTopics(model);
+            return getTopics(model,session);
         }else{
             return "Login";
         }
     }
 
     @Override
-    public String getTopics(Model model) {
+    public String getTopics(Model model,HttpSession session) {
+
+        User user = (User) session.getAttribute("User");
+
+        if (user == null){
+            return login();
+        }
+
         List<TopicEntity> topicEntities = forumService.getTopics();
         List<Topic> topics = new ArrayList<>();
         for(TopicEntity topic: topicEntities){
@@ -74,7 +81,13 @@ public class UserContrllerImpl implements UserController {
 
 
     @Override
-    public String getTopic(Model model, String id) {
+    public String getTopic(Model model, String id,HttpSession session) {
+
+        User user = (User) session.getAttribute("User");
+
+        if (user == null){
+            return login();
+        }
 
         Optional<TopicEntity> topic = forumService.getTopicById(id);
 
@@ -93,12 +106,20 @@ public class UserContrllerImpl implements UserController {
             model.addAttribute("topic",topic1);
             return "ShowTopic";
         }
-        return getTopics(model);
+        return getTopics(model,session);
     }
 
     @Override
-    public String getReplyTopic(Model model,String id) {
+    public String getReplyTopic(Model model,String id,String title,HttpSession session) {
+
+        User user = (User) session.getAttribute("User");
+
+        if (user == null){
+            return login();
+        }
+
         model.addAttribute("id",id);
+        model.addAttribute("title",title.replace("Re:",""));
         return "ReplyTopic";
     }
 
@@ -106,6 +127,10 @@ public class UserContrllerImpl implements UserController {
     public String saveReplyTopic(String id, String title,String content,HttpSession session,Model model) {
 
         User user = (User) session.getAttribute("User");
+
+        if (user == null){
+            return login();
+        }
 
         MessageEntity message = new MessageEntity();
         message.setContent(content);
@@ -116,11 +141,16 @@ public class UserContrllerImpl implements UserController {
 
         forumService.saveNewReply(message);
 
-        return getTopics(model);
+        return getTopics(model,session);
     }
 
     @Override
-    public String newTopic(String id,Model model) {
+    public String newTopic(String id,Model model,HttpSession session) {
+        User user = (User) session.getAttribute("User");
+
+        if (user == null){
+            return login();
+        }
         model.addAttribute("id",id);
         return "NewTopic";
     }
@@ -129,6 +159,11 @@ public class UserContrllerImpl implements UserController {
     public String saveTopic(String title, String description, String id, HttpSession session, Model model) {
 
         User user = (User) session.getAttribute("User");
+
+
+        if (user == null){
+            return login();
+        }
 
         TopicEntity topic = new TopicEntity();
 
@@ -140,7 +175,7 @@ public class UserContrllerImpl implements UserController {
 
         forumService.saveNewTopic(topic);
 
-        return getTopics(model);
+        return getTopics(model,session);
     }
 
     @Override
@@ -148,6 +183,9 @@ public class UserContrllerImpl implements UserController {
 
         User user = (User) session.getAttribute("User");
 
+        if (user == null){
+            return login();
+        }
 
         List<TopicEntity> topicEntities = forumService.getAllTopicByIDUser(user.getId());
 
@@ -158,6 +196,12 @@ public class UserContrllerImpl implements UserController {
 
     @Override
     public String deleteTopics(Model model, String listId,HttpSession session) {
+
+        User user = (User) session.getAttribute("User");
+
+        if (user == null){
+            return login();
+        }
 
         forumService.deleteTopics(listId);
 
@@ -186,4 +230,5 @@ public class UserContrllerImpl implements UserController {
     public Optional<UserEntity> getUserById(String id){
         return forumService.getUserById(id);
     }
+
 }

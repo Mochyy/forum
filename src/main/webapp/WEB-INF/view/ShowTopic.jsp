@@ -25,7 +25,7 @@
 <h3>Chủ đề: <%=topic.getTitle()%></h3>
 <p>Bài mới nhất gửi <%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%> PM do <b><%=topic.getUser().get().getUsername()%></b>. <%=topic.getNumberRe()%> hồi âm</p>
 <%if (messages.size() == 0){%>
-<a href="/newReplyTopic/<%=topic.getId()%>"> trả lời</a>
+<a href="/newReplyTopic/<%=topic.getId()%>/<%=topic.getTitle()%>"> Trả lời</a>
 <%}%>
 
 <table class="table table-striped table-bordered" style="width: 500px; margin:20px 0px 0px 30px;">
@@ -38,7 +38,7 @@
 </tr>
 <tr >
     <td style="width: 250px;"> <%=m.getCreator().get().getUsername()%> </td>
-    <td><%=m.getTitle()%> <a href="/newReplyTopic/<%=topic.getId()%>" style="text-align: right;width: 80%;display: inline-block;"> trả lời</a> <br> <%=m.getContent()%></td>
+    <td><%=m.getTitle()%> <a href="/newReplyTopic/<%=topic.getId()%>/<%=m.getTitle()%>" style="text-align: right;width: 80%;display: inline-block;"> Trả lời</a> <br> <%=m.getContent()%></td>
 </tr>
 
 <%}%>

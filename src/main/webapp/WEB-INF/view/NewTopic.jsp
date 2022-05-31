@@ -48,7 +48,7 @@
                 description:description
             },
             success:function (data){
-                window.location.href = "/topic/<%=id%>"
+                window.location.href = "/topics"
             },
             error:function () {
                 alert("Thêm không thành công");

@@ -10,20 +10,21 @@
 
     <title>New Topic</title>
     <% String id  = (String) request.getAttribute("id");
+    String title = (String) request.getAttribute("title");
     User user = (User) session.getAttribute("User");%>
 </head>
 <body>
 <p style="text-align: right;">Chao | <%=user.getUsername()%><a href="/logout">  Thoat</a></p>
 
 <label style="font-weight: bold"> Tiêu Đề </label> <br>
-<input type="text" name="title" style="width: 500px;" id="title">
+<input type="text" name="title" style="width: 500px;" value="Re:<%=title%>" id="title">
 <br>
 <label style="font-weight: bold;"> Nội Dung </label> <br>
 <textarea type="text" rows="7" cols="66" name="content" style="overflow-y: scroll" id="content" height="100px"></textarea>
 
 <div>
-    <button type="button" onclick="createTopic()">Goi</button>
-    <a href="/topics"><button>Huy bo</button></a>
+    <button type="button" onclick="createTopic()">Gởi</button>
+    <a href="/topic/<%=id%>"><button>Hủy bỏ</button></a>
 </div>
 
 

@@ -14,19 +14,19 @@ public interface UserController {
     @PostMapping("/login")
     public String checkUser(Model model, @RequestParam String name, @RequestParam String password, HttpSession session);
     @GetMapping("/topics")
-    public String getTopics(Model model);
+    public String getTopics(Model model,HttpSession session);
 //    @GetMapping("/getUserById")
 //    public Optional<UserEntity> getUserById(Model model, @RequestParam String id);
     @GetMapping("/logout")
     public String logout(HttpSession session);
     @GetMapping("/topic/{id}")
-    public String getTopic(Model model, @PathVariable String id);
-    @GetMapping("/newReplyTopic/{id}")
-    public String getReplyTopic(Model model,@PathVariable String id);
+    public String getTopic(Model model, @PathVariable String id,HttpSession session);
+    @GetMapping("/newReplyTopic/{id}/{title}")
+    public String getReplyTopic(Model model,@PathVariable String id,@PathVariable String title,HttpSession session);
     @PostMapping("/newReplyTopic")
     public String saveReplyTopic(@RequestParam String id,@RequestParam String title,@RequestParam String content,HttpSession session,Model model);
     @GetMapping("/newTopic/{id}")
-    public String newTopic(@PathVariable String id,Model model);
+    public String newTopic(@PathVariable String id,Model model,HttpSession session);
     @PostMapping("/newTopic")
     public String saveTopic(@RequestParam String title,@RequestParam String description,String id,HttpSession session,Model model);
     @GetMapping("/getTopicById")
