@@ -46,7 +46,7 @@
 
     <tr >
         <td><a href="/topic/<%=topic.getId()%>"><%=topic.getTitle()%></a><br>
-            <p>Bài mới nhất của <a href="#" id="<%=topic.getUser().get().getId()%>"> <%=topic.getUser().get().getUsername()%>  </a>,<%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%> PM </p>
+            <p>Bài mới nhất của <a href="#" id="<%=topic.getUser().get().getId()%>"> <%=topic.getUser().get().getUsername()%>  </a>,<%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%>  </p>
         </td>
         <td> <%=topic.getNumberRe()%></td>
     </tr>

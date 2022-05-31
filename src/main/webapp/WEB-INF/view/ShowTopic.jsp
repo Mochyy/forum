@@ -23,17 +23,29 @@
 
 
 <h3>Chủ đề: <%=topic.getTitle()%></h3>
-<p>Bài mới nhất gửi <%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%> PM do <b><%=topic.getUser().get().getUsername()%></b>. <%=topic.getNumberRe()%> hồi âm</p>
+<p>Bài mới nhất gửi <%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%> do <b><%=topic.getUser().get().getUsername()%></b>. <%=topic.getNumberRe()%> hồi âm</p>
 <%if (messages.size() == 0){%>
 <a href="/newReplyTopic/<%=topic.getId()%>/<%=topic.getTitle()%>"> Trả lời</a>
 <%}%>
 
+<table table class="table table-striped table-bordered" style="width: 500px; margin:20px 0px 0px 30px;">
+    <tr>
+        <th><%=topic.getDate().getDayOfMonth()%> - <%=topic.getDate().getMonth().getValue()%> - <%=topic.getDate().getYear()%> <%=topic.getDate().getHour()%>:<%=topic.getDate().getMinute()%></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td> <%=topic.getUser().get().getUsername()%></td>
+        <td><%=topic.getTitle()%> <br> <%=topic.getDescription()%></td>
+    </tr>
+</table>
+
 <table class="table table-striped table-bordered" style="width: 500px; margin:20px 0px 0px 30px;">
+
 
 
 <%for(Message m : messages){%>
 <tr >
-    <th style="width: 250px;"><%=m.getCreatedTime().getDayOfMonth()%> - <%=m.getCreatedTime().getMonthValue()%> - <%=m.getCreatedTime().getYear()%> <%=m.getCreatedTime().getHour()%>:<%=m.getCreatedTime().getMinute()%> PM</th>
+    <th style="width: 250px;"><%=m.getCreatedTime().getDayOfMonth()%> - <%=m.getCreatedTime().getMonthValue()%> - <%=m.getCreatedTime().getYear()%> <%=m.getCreatedTime().getHour()%>:<%=m.getCreatedTime().getMinute()%> </th>
     <th></th>
 </tr>
 <tr >
